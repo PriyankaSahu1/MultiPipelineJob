@@ -1,7 +1,8 @@
 node{​​​​​
 	def mvnfile = "student_app/pom.xml"
+	
 	stage ("checkout") {​​​​​
-	checkout scm
-	sh "mvn -f ${​​​​​mvnfile}​​​​​ clean install"
+	 checkout scm
+		sh "mvn -f ${​​​​​mvnfile}​​​​​ clean install"
 	}​​​​​
 }​​​​​
