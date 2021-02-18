@@ -1,28 +1,9 @@
-pipeline {
-	agent any
-	
-	stages {
-		stage ('Compile Stage') {
-		
-			steps {
-				sh '''
-			cd student_app
-			mvn clean install
-		'''
-			}
-		}
-	stage ('Testing Stage') {
+node {
+    def mvnfile = "student_app/pom.xml"
+   
+    stage ("checkout") {
+      checkout scm
+      sh "mvn -f ${mvnfile} clean install" 
+    }
+}
 
-            steps {
-                echo 'testing the application'
-            }
-        }
-
-
-        stage ('Deployment Stage') {
-            steps {
-                echo 'deploying the application'
-            }
-        }
-     }
-}​​​​​
